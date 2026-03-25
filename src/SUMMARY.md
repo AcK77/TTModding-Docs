@@ -1,11 +1,11 @@
 # Summary
 
-# Home
+# 🏠 Home
 
 - [Introduction](readme.md)
 - [Contributors](misc/contributors.md) 
 
-# Games
+# 🎮 Games
 
 - [Engine](engine.md)
 - [Characters](characters.md)
@@ -50,7 +50,7 @@
     - [LEGO Star Wars: The Skywalker Saga](games/lsw_ss.md)
     - [LEGO Batman: Legacy of the Dark Knight](games/lb_ldk.md)
  
-# Modding
+# 🛠️ Modding
 
 - [File Formats](fileformats.md)
     - [CBX Files](fileformats/cbx.md)
