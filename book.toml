@@ -17,8 +17,6 @@ theme = "theme"
 enable = true
 level = 0
 
-[preprocessor.alerts]
-
 [preprocessor.embedify]
 footer.enable = true
 footer.message = "Copyright © 2025 • Created with ❤️ by TTModding community."
