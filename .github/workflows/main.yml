@@ -19,20 +19,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      MDBOOK_VERSION: 0.4.36
+      MDBOOK_VERSION: 0.4.40 
+      ALERTS_VERSION: 0.8.0
+      EMBEDIFY_VERSION: 0.3.2
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install mdBook (Binary)
+      - name: Install Binaries (mdBook & Plugins)
         run: |
-          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz | tar -xz
-          mv mdbook /usr/local/bin/
-
-      - name: Install Plugins
-        run: |
-          cargo install mdbook-alerts
-          cargo install mdbook-embedify
+          mkdir -p bin
+          
+          # mdBook
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C bin
+          
+          # mdbook-alerts
+          curl -sSL https://github.com/lambdalisue/rs-mdbook-alerts/releases/download/v${ALERTS_VERSION}/mdbook-alerts-v${ALERTS_VERSION}-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C bin
+          
+          # mdbook-embedify
+          curl -sSL https://github.com/MR-Addict/mdbook-embedify/releases/download/v${EMBEDIFY_VERSION}/mdbook-embedify-v${EMBEDIFY_VERSION}-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C bin
+          
+          chmod +x bin/*
+          sudo mv bin/* /usr/local/bin/
 
       - name: Setup Pages
         id: pages
