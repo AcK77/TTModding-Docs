@@ -54,6 +54,7 @@
 
 - [File Formats](fileformats.md)
     - [CBX Files](fileformats/cbx.md)
+    - [GIZ Files](fileformats/giz.md)
     - [TSH Files](fileformats/tsh.md)
 - [Tools](tools.md)
     - [CBXDecoder](tools/cbxdecoder.md)
