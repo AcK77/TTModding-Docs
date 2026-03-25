@@ -20,27 +20,17 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MDBOOK_VERSION: 0.4.45
-      EMBEDIFY_VERSION: 0.3.2
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Binaries
+      - name: Install mdBook (Fast Binary)
         run: |
-          mkdir -p bin
+          curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz
+          sudo mv mdbook /usr/local/bin/
 
-          curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz -C bin
-
-          curl -sSL -o embedify.zip "https://github.com/MR-Addict/mdbook-embedify/releases/download/${EMBEDIFY_VERSION}/mdbook-embedify-${EMBEDIFY_VERSION}-x86_64-unknown-linux-gnu.zip"
-          unzip -o embedify.zip -d temp_embedify
-          find temp_embedify -type f -name "mdbook-embedify" -exec mv {} bin/ \;
-          rm -rf temp_embedify embedify.zip
-
-          chmod +x bin/*
-          sudo mv bin/* /usr/local/bin/
-
-          mdbook --version
-          mdbook-embedify --version
+      - name: Install Embedify (Compile for Compatibility)
+        run: cargo install mdbook-embedify
 
       - name: Setup Pages
         id: pages
