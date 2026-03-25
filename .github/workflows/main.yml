@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      MDBOOK_VERSION: 0.4.51
+      MDBOOK_VERSION: 0.4.35
       ALERTS_VERSION: 0.8.0
       EMBEDIFY_VERSION: 0.3.2
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
